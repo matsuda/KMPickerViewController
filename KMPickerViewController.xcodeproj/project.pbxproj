@@ -14,13 +14,14 @@
 		0EF3D61D187EAD9B00F5C51B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF3D61C187EAD9B00F5C51B /* main.m */; };
 		0EF3D621187EAD9B00F5C51B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF3D620187EAD9B00F5C51B /* AppDelegate.m */; };
 		0EF3D624187EAD9B00F5C51B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EF3D622187EAD9B00F5C51B /* Main.storyboard */; };
-		0EF3D627187EAD9B00F5C51B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF3D626187EAD9B00F5C51B /* ViewController.m */; };
 		0EF3D629187EAD9B00F5C51B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EF3D628187EAD9B00F5C51B /* Images.xcassets */; };
 		0EF3D630187EAD9B00F5C51B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EF3D62F187EAD9B00F5C51B /* XCTest.framework */; };
 		0EF3D631187EAD9B00F5C51B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EF3D610187EAD9B00F5C51B /* Foundation.framework */; };
 		0EF3D632187EAD9B00F5C51B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EF3D614187EAD9B00F5C51B /* UIKit.framework */; };
 		0EF3D63A187EAD9B00F5C51B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0EF3D638187EAD9B00F5C51B /* InfoPlist.strings */; };
 		0EF3D63C187EAD9B00F5C51B /* KMPickerViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF3D63B187EAD9B00F5C51B /* KMPickerViewControllerTests.m */; };
+		0EF3D648187EAFA500F5C51B /* KMPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF3D647187EAFA500F5C51B /* KMPickerViewController.m */; };
+		0EF3D64B187EB08400F5C51B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF3D64A187EB08400F5C51B /* ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,14 +46,16 @@
 		0EF3D61F187EAD9B00F5C51B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0EF3D620187EAD9B00F5C51B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		0EF3D623187EAD9B00F5C51B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0EF3D625187EAD9B00F5C51B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		0EF3D626187EAD9B00F5C51B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		0EF3D628187EAD9B00F5C51B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0EF3D62E187EAD9B00F5C51B /* KMPickerViewControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KMPickerViewControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EF3D62F187EAD9B00F5C51B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		0EF3D637187EAD9B00F5C51B /* KMPickerViewControllerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KMPickerViewControllerTests-Info.plist"; sourceTree = "<group>"; };
 		0EF3D639187EAD9B00F5C51B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0EF3D63B187EAD9B00F5C51B /* KMPickerViewControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KMPickerViewControllerTests.m; sourceTree = "<group>"; };
+		0EF3D646187EAFA500F5C51B /* KMPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMPickerViewController.h; sourceTree = "<group>"; };
+		0EF3D647187EAFA500F5C51B /* KMPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMPickerViewController.m; sourceTree = "<group>"; };
+		0EF3D649187EB08400F5C51B /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		0EF3D64A187EB08400F5C51B /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +85,7 @@
 		0EF3D604187EAD9B00F5C51B = {
 			isa = PBXGroup;
 			children = (
+				0EF3D645187EAFA500F5C51B /* KMPickerViewController */,
 				0EF3D616187EAD9B00F5C51B /* KMPickerViewControllerSample */,
 				0EF3D635187EAD9B00F5C51B /* KMPickerViewControllerTests */,
 				0EF3D60F187EAD9B00F5C51B /* Frameworks */,
@@ -114,9 +118,9 @@
 			children = (
 				0EF3D61F187EAD9B00F5C51B /* AppDelegate.h */,
 				0EF3D620187EAD9B00F5C51B /* AppDelegate.m */,
+				0EF3D649187EB08400F5C51B /* ViewController.h */,
+				0EF3D64A187EB08400F5C51B /* ViewController.m */,
 				0EF3D622187EAD9B00F5C51B /* Main.storyboard */,
-				0EF3D625187EAD9B00F5C51B /* ViewController.h */,
-				0EF3D626187EAD9B00F5C51B /* ViewController.m */,
 				0EF3D628187EAD9B00F5C51B /* Images.xcassets */,
 				0EF3D617187EAD9B00F5C51B /* Supporting Files */,
 			);
@@ -150,6 +154,15 @@
 				0EF3D638187EAD9B00F5C51B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0EF3D645187EAFA500F5C51B /* KMPickerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0EF3D646187EAFA500F5C51B /* KMPickerViewController.h */,
+				0EF3D647187EAFA500F5C51B /* KMPickerViewController.m */,
+			);
+			path = KMPickerViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,8 +262,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0EF3D627187EAD9B00F5C51B /* ViewController.m in Sources */,
+				0EF3D648187EAFA500F5C51B /* KMPickerViewController.m in Sources */,
 				0EF3D621187EAD9B00F5C51B /* AppDelegate.m in Sources */,
+				0EF3D64B187EB08400F5C51B /* ViewController.m in Sources */,
 				0EF3D61D187EAD9B00F5C51B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
