@@ -27,8 +27,6 @@ static NSString *kDefaultOverUnitString = @"以上";
         _maximumQuantity = kDefaultMaximumQuantity;
         _unit = [kDefaultUnitString copy];
         _overUnit = [kDefaultOverUnitString copy];
-        self.pickerView.delegate = self;
-        self.pickerView.dataSource = self;
         self.delegate = self;
         self.quantityDelegate = delegate;
     }

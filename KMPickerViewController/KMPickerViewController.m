@@ -66,8 +66,8 @@
 {
     if ([self.delegate respondsToSelector:@selector(pickerViewControllerDidCancel:)]) {
         [self.delegate pickerViewControllerDidCancel:self];
-        [self dismissWithCompletion:nil];
     }
+    [self dismissWithCompletion:nil];
 }
 
 - (void)showInView:(UIView *)view completion:(void (^)(BOOL finished))completion
