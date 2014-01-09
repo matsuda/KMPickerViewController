@@ -30,18 +30,6 @@
     return self;
 }
 
-/*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        [self.view addSubview:self.grandView];
-        [self.view addSubview:self.contentView];
-    }
-    return self;
-}
- */
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -144,7 +132,7 @@
 - (UIBarButtonItem *)selectButton
 {
     if (!_selectButton) {
-        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"完了" style:UIBarButtonItemStyleDone target:self action:@selector(tapSelect:)];
+        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"OK" style:UIBarButtonItemStyleDone target:self action:@selector(tapSelect:)];
         _selectButton = item;
     }
     return _selectButton;
@@ -153,7 +141,7 @@
 - (UIBarButtonItem *)cancelButton
 {
     if (!_cancelButton) {
-        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"キャンセル" style:UIBarButtonItemStyleBordered target:self action:@selector(tapCancel:)];
+        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(tapCancel:)];
         _cancelButton = item;
     }
     return _cancelButton;

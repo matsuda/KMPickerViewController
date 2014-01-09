@@ -8,10 +8,13 @@
 
 #import "ViewController.h"
 #import "KMPickerViewController.h"
+#import "KMQuantityPickerViewController.h"
 
 @interface ViewController () <KMPickerViewControllerDelegate>
 @property (strong, nonatomic) KMPickerViewController *pickerController;
+@property (strong, nonatomic) KMQuantityPickerViewController *quantityPickerController;
 @property (weak, nonatomic) IBOutlet UIButton *defaultButton;
+@property (weak, nonatomic) IBOutlet UIButton *quantityButton;
 @end
 
 @implementation ViewController
@@ -45,6 +48,11 @@
 - (IBAction)tapDefaultButton:(id)sender
 {
     [self presentPicker];
+}
+
+- (IBAction)tapQuantityButton:(id)sender
+{
+    [self presentQuantityPicker];
 }
 
 - (void)deselectRowInTableView
@@ -110,6 +118,41 @@
 }
 
 - (void)pickerViewControllerDidCancel:(KMPickerViewController *)controller
+{
+    [self deselectRowInTableView];
+}
+
+#pragma mark - KMPickerViewController
+
+- (KMQuantityPickerViewController *)quantityPickerController
+{
+    if (!_quantityPickerController) {
+        _quantityPickerController = [[KMQuantityPickerViewController alloc] initWithDelegate:self];
+    }
+    return _quantityPickerController;
+}
+
+- (void)presentQuantityPicker
+{
+    KMQuantityPickerViewController *picker = self.quantityPickerController;
+    picker.minimumQuantity = 1;
+    picker.maximumQuantity = 11;
+    picker.unit = @"枚";
+    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+    NSInteger quantity = [self.quantityButton.titleLabel.text integerValue];
+    [picker showInView:window quantity:quantity completion:nil];
+}
+
+#pragma mark - KMQuantityPickerViewControllerDelegate
+
+- (void)quantityPickerViewController:(KMQuantityPickerViewController *)controller
+                   didSelectQuantity:(NSInteger)quantity
+{
+    [self.quantityButton setTitle:[NSString stringWithFormat:@"%d", quantity] forState:UIControlStateNormal];
+    [self deselectRowInTableView];
+}
+
+- (void)quantityPickerViewControllerDidCancel:(KMQuantityPickerViewController *)controller
 {
     [self deselectRowInTableView];
 }

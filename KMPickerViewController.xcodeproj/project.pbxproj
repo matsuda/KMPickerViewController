@@ -22,6 +22,7 @@
 		0EF3D63C187EAD9B00F5C51B /* KMPickerViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF3D63B187EAD9B00F5C51B /* KMPickerViewControllerTests.m */; };
 		0EF3D648187EAFA500F5C51B /* KMPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF3D647187EAFA500F5C51B /* KMPickerViewController.m */; };
 		0EF3D64B187EB08400F5C51B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF3D64A187EB08400F5C51B /* ViewController.m */; };
+		0EF3D64E187EB65100F5C51B /* KMQuantityPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EF3D64D187EB65100F5C51B /* KMQuantityPickerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		0EF3D647187EAFA500F5C51B /* KMPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMPickerViewController.m; sourceTree = "<group>"; };
 		0EF3D649187EB08400F5C51B /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		0EF3D64A187EB08400F5C51B /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		0EF3D64C187EB65100F5C51B /* KMQuantityPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMQuantityPickerViewController.h; sourceTree = "<group>"; };
+		0EF3D64D187EB65100F5C51B /* KMQuantityPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMQuantityPickerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +164,8 @@
 			children = (
 				0EF3D646187EAFA500F5C51B /* KMPickerViewController.h */,
 				0EF3D647187EAFA500F5C51B /* KMPickerViewController.m */,
+				0EF3D64C187EB65100F5C51B /* KMQuantityPickerViewController.h */,
+				0EF3D64D187EB65100F5C51B /* KMQuantityPickerViewController.m */,
 			);
 			path = KMPickerViewController;
 			sourceTree = "<group>";
@@ -264,6 +269,7 @@
 			files = (
 				0EF3D648187EAFA500F5C51B /* KMPickerViewController.m in Sources */,
 				0EF3D621187EAD9B00F5C51B /* AppDelegate.m in Sources */,
+				0EF3D64E187EB65100F5C51B /* KMQuantityPickerViewController.m in Sources */,
 				0EF3D64B187EB08400F5C51B /* ViewController.m in Sources */,
 				0EF3D61D187EAD9B00F5C51B /* main.m in Sources */,
 			);
@@ -474,6 +480,7 @@
 				0EF3D641187EAD9B00F5C51B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0EF3D642187EAD9B00F5C51B /* Build configuration list for PBXNativeTarget "KMPickerViewControllerTests" */ = {
 			isa = XCConfigurationList;
@@ -482,6 +489,7 @@
 				0EF3D644187EAD9B00F5C51B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
