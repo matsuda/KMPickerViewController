@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E050A18187F828400B934D9 /* KMPrefecturePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E050A17187F828400B934D9 /* KMPrefecturePickerViewController.m */; };
+		0E050A1D187F901000B934D9 /* KMPickerViewController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0E050A1C187F901000B934D9 /* KMPickerViewController.bundle */; };
 		0EF3D611187EAD9B00F5C51B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EF3D610187EAD9B00F5C51B /* Foundation.framework */; };
 		0EF3D613187EAD9B00F5C51B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EF3D612187EAD9B00F5C51B /* CoreGraphics.framework */; };
 		0EF3D615187EAD9B00F5C51B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EF3D614187EAD9B00F5C51B /* UIKit.framework */; };
@@ -36,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E050A16187F828400B934D9 /* KMPrefecturePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMPrefecturePickerViewController.h; sourceTree = "<group>"; };
+		0E050A17187F828400B934D9 /* KMPrefecturePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMPrefecturePickerViewController.m; sourceTree = "<group>"; };
+		0E050A1C187F901000B934D9 /* KMPickerViewController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = KMPickerViewController.bundle; sourceTree = "<group>"; };
 		0EF3D60D187EAD9B00F5C51B /* KMPickerViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KMPickerViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EF3D610187EAD9B00F5C51B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0EF3D612187EAD9B00F5C51B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -162,10 +167,13 @@
 		0EF3D645187EAFA500F5C51B /* KMPickerViewController */ = {
 			isa = PBXGroup;
 			children = (
+				0E050A1C187F901000B934D9 /* KMPickerViewController.bundle */,
 				0EF3D646187EAFA500F5C51B /* KMPickerViewController.h */,
 				0EF3D647187EAFA500F5C51B /* KMPickerViewController.m */,
 				0EF3D64C187EB65100F5C51B /* KMQuantityPickerViewController.h */,
 				0EF3D64D187EB65100F5C51B /* KMQuantityPickerViewController.m */,
+				0E050A16187F828400B934D9 /* KMPrefecturePickerViewController.h */,
+				0E050A17187F828400B934D9 /* KMPrefecturePickerViewController.m */,
 			);
 			path = KMPickerViewController;
 			sourceTree = "<group>";
@@ -248,6 +256,7 @@
 			files = (
 				0EF3D629187EAD9B00F5C51B /* Images.xcassets in Resources */,
 				0EF3D61B187EAD9B00F5C51B /* InfoPlist.strings in Resources */,
+				0E050A1D187F901000B934D9 /* KMPickerViewController.bundle in Resources */,
 				0EF3D624187EAD9B00F5C51B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,6 +278,7 @@
 			files = (
 				0EF3D648187EAFA500F5C51B /* KMPickerViewController.m in Sources */,
 				0EF3D621187EAD9B00F5C51B /* AppDelegate.m in Sources */,
+				0E050A18187F828400B934D9 /* KMPrefecturePickerViewController.m in Sources */,
 				0EF3D64E187EB65100F5C51B /* KMQuantityPickerViewController.m in Sources */,
 				0EF3D64B187EB08400F5C51B /* ViewController.m in Sources */,
 				0EF3D61D187EAD9B00F5C51B /* main.m in Sources */,

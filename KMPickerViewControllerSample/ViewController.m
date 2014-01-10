@@ -9,12 +9,21 @@
 #import "ViewController.h"
 #import "KMPickerViewController.h"
 #import "KMQuantityPickerViewController.h"
+#import "KMPrefecturePickerViewController.h"
 
-@interface ViewController () <KMPickerViewControllerDelegate>
+@interface ViewController () <
+KMPickerViewControllerDelegate,
+KMQuantityPickerViewControllerDelegate,
+KMPrefecturePickerViewControllerDelegate>
+
 @property (strong, nonatomic) KMPickerViewController *pickerController;
 @property (strong, nonatomic) KMQuantityPickerViewController *quantityPickerController;
+@property (strong, nonatomic) KMPrefecturePickerViewController *prefecturePickerController;
+
 @property (weak, nonatomic) IBOutlet UIButton *defaultButton;
 @property (weak, nonatomic) IBOutlet UIButton *quantityButton;
+@property (weak, nonatomic) IBOutlet UIButton *prefectureButton;
+
 @end
 
 @implementation ViewController
@@ -55,6 +64,11 @@
     [self presentQuantityPicker];
 }
 
+- (IBAction)tapPrefectureButton:(id)sender
+{
+    [self presentPrefecturePicker];
+}
+
 - (void)deselectRowInTableView
 {
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
@@ -64,6 +78,23 @@
 }
 
 #pragma mark - Table view data source
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *title = nil;
+    switch (section) {
+        case 0:
+            title = @"Base";
+            break;
+        case 1:
+            title = @"Quantity";
+            break;
+        case 2:
+            title = @"Prefecture";
+            break;
+    }
+    return title;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -134,6 +165,7 @@
 
 - (void)presentQuantityPicker
 {
+    [self.view endEditing:YES];
     KMQuantityPickerViewController *picker = self.quantityPickerController;
     picker.minimumQuantity = 1;
     picker.maximumQuantity = 11;
@@ -153,6 +185,38 @@
 }
 
 - (void)quantityPickerViewControllerDidCancel:(KMQuantityPickerViewController *)controller
+{
+    [self deselectRowInTableView];
+}
+
+#pragma mark - KMPrefecturePickerViewController
+
+- (KMPrefecturePickerViewController *)prefecturePickerController
+{
+    if (!_prefecturePickerController) {
+        _prefecturePickerController = [[KMPrefecturePickerViewController alloc] initWithDelegate:self];
+    }
+    return _prefecturePickerController;
+}
+
+- (void)presentPrefecturePicker
+{
+    [self.view endEditing:YES];
+    KMPrefecturePickerViewController *picker = self.prefecturePickerController;
+    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+    [picker showInView:window prefecture:self.prefectureButton.titleLabel.text completion:nil];
+}
+
+#pragma mark - KMPrefecturePickerViewControllerDelegate
+
+- (void)prefecturePickerViewController:(KMPrefecturePickerViewController *)controller
+                   didSelectPrefecture:(NSString *)prefecture
+{
+    [self.prefectureButton setTitle:prefecture forState:UIControlStateNormal];
+    [self deselectRowInTableView];
+}
+
+- (void)prefecturePickerViewControllerDidCancel:(KMPrefecturePickerViewController *)controller
 {
     [self deselectRowInTableView];
 }
