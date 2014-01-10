@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0E050A18187F828400B934D9 /* KMPrefecturePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E050A17187F828400B934D9 /* KMPrefecturePickerViewController.m */; };
 		0E050A1D187F901000B934D9 /* KMPickerViewController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0E050A1C187F901000B934D9 /* KMPickerViewController.bundle */; };
+		0E050A20187F9A8500B934D9 /* ViewController+Base.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E050A1F187F9A8500B934D9 /* ViewController+Base.m */; };
+		0E050A23187F9AB300B934D9 /* ViewController+Quantity.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E050A22187F9AB300B934D9 /* ViewController+Quantity.m */; };
+		0E050A26187F9B2C00B934D9 /* ViewController+Prefecture.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E050A25187F9B2C00B934D9 /* ViewController+Prefecture.m */; };
 		0EF3D611187EAD9B00F5C51B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EF3D610187EAD9B00F5C51B /* Foundation.framework */; };
 		0EF3D613187EAD9B00F5C51B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EF3D612187EAD9B00F5C51B /* CoreGraphics.framework */; };
 		0EF3D615187EAD9B00F5C51B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EF3D614187EAD9B00F5C51B /* UIKit.framework */; };
@@ -41,6 +44,12 @@
 		0E050A16187F828400B934D9 /* KMPrefecturePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMPrefecturePickerViewController.h; sourceTree = "<group>"; };
 		0E050A17187F828400B934D9 /* KMPrefecturePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMPrefecturePickerViewController.m; sourceTree = "<group>"; };
 		0E050A1C187F901000B934D9 /* KMPickerViewController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = KMPickerViewController.bundle; sourceTree = "<group>"; };
+		0E050A1E187F9A8500B934D9 /* ViewController+Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+Base.h"; sourceTree = "<group>"; };
+		0E050A1F187F9A8500B934D9 /* ViewController+Base.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+Base.m"; sourceTree = "<group>"; };
+		0E050A21187F9AB300B934D9 /* ViewController+Quantity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+Quantity.h"; sourceTree = "<group>"; };
+		0E050A22187F9AB300B934D9 /* ViewController+Quantity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+Quantity.m"; sourceTree = "<group>"; };
+		0E050A24187F9B2C00B934D9 /* ViewController+Prefecture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+Prefecture.h"; sourceTree = "<group>"; };
+		0E050A25187F9B2C00B934D9 /* ViewController+Prefecture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+Prefecture.m"; sourceTree = "<group>"; };
 		0EF3D60D187EAD9B00F5C51B /* KMPickerViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KMPickerViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EF3D610187EAD9B00F5C51B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0EF3D612187EAD9B00F5C51B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -128,6 +137,12 @@
 				0EF3D620187EAD9B00F5C51B /* AppDelegate.m */,
 				0EF3D649187EB08400F5C51B /* ViewController.h */,
 				0EF3D64A187EB08400F5C51B /* ViewController.m */,
+				0E050A1E187F9A8500B934D9 /* ViewController+Base.h */,
+				0E050A1F187F9A8500B934D9 /* ViewController+Base.m */,
+				0E050A21187F9AB300B934D9 /* ViewController+Quantity.h */,
+				0E050A22187F9AB300B934D9 /* ViewController+Quantity.m */,
+				0E050A24187F9B2C00B934D9 /* ViewController+Prefecture.h */,
+				0E050A25187F9B2C00B934D9 /* ViewController+Prefecture.m */,
 				0EF3D622187EAD9B00F5C51B /* Main.storyboard */,
 				0EF3D628187EAD9B00F5C51B /* Images.xcassets */,
 				0EF3D617187EAD9B00F5C51B /* Supporting Files */,
@@ -276,10 +291,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E050A26187F9B2C00B934D9 /* ViewController+Prefecture.m in Sources */,
 				0EF3D648187EAFA500F5C51B /* KMPickerViewController.m in Sources */,
 				0EF3D621187EAD9B00F5C51B /* AppDelegate.m in Sources */,
+				0E050A20187F9A8500B934D9 /* ViewController+Base.m in Sources */,
 				0E050A18187F828400B934D9 /* KMPrefecturePickerViewController.m in Sources */,
 				0EF3D64E187EB65100F5C51B /* KMQuantityPickerViewController.m in Sources */,
+				0E050A23187F9AB300B934D9 /* ViewController+Quantity.m in Sources */,
 				0EF3D64B187EB08400F5C51B /* ViewController.m in Sources */,
 				0EF3D61D187EAD9B00F5C51B /* main.m in Sources */,
 			);

@@ -8,6 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UITableViewController
+@class KMPickerViewController;
+@class KMQuantityPickerViewController;
+@class KMPrefecturePickerViewController;
+
+@interface ViewController : UITableViewController {
+    KMPickerViewController *_pickerController;
+    KMQuantityPickerViewController *_quantityPickerController;
+    KMPrefecturePickerViewController *_prefecturePickerController;
+}
+
+@property (weak, nonatomic) IBOutlet UIButton *defaultButton;
+@property (weak, nonatomic) IBOutlet UIButton *quantityButton;
+@property (weak, nonatomic) IBOutlet UIButton *prefectureButton;
+
+@end
+
+@interface ViewController (Protected)
+
+- (void)deselectRowInTableView;
 
 @end
