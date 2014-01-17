@@ -19,12 +19,20 @@
 
 @implementation KMPickerViewController
 
-- (id)initWithDelegate:(id<KMPickerViewControllerDelegate>)delegate
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super init];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         [self.view addSubview:self.grandView];
         [self.view addSubview:self.contentView];
+    }
+    return self;
+}
+
+- (id)initWithDelegate:(id<KMPickerViewControllerDelegate>)delegate
+{
+    self = [self initWithNibName:nil bundle:nil];
+    if (self) {
         self.delegate = delegate;
     }
     return self;
@@ -47,27 +55,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Public
+
 - (void)setDelegate:(id<KMPickerViewControllerDelegate>)delegate
 {
     _delegate = delegate;
     self.pickerView.delegate = delegate;
     self.pickerView.dataSource = delegate;
-}
-
-- (void)tapSelect:(id)sender
-{
-    if ([self.delegate respondsToSelector:@selector(pickerViewController:didSelect:)]) {
-        [self.delegate pickerViewController:self didSelect:self.pickerView];
-    }
-    [self dismissWithCompletion:nil];
-}
-
-- (void)tapCancel:(id)sender
-{
-    if ([self.delegate respondsToSelector:@selector(pickerViewControllerDidCancel:)]) {
-        [self.delegate pickerViewControllerDidCancel:self];
-    }
-    [self dismissWithCompletion:nil];
 }
 
 - (void)showInView:(UIView *)view completion:(void (^)(BOOL finished))completion
@@ -111,11 +105,35 @@
     }];
 }
 
+#pragma mark - Actions
+
+- (void)tapSelect:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(pickerViewController:didSelect:)]) {
+        [self.delegate pickerViewController:self didSelect:self.pickerView];
+    }
+    [self dismissWithCompletion:nil];
+}
+
+- (void)tapCancel:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(pickerViewControllerDidCancel:)]) {
+        [self.delegate pickerViewControllerDidCancel:self];
+    }
+    [self dismissWithCompletion:nil];
+}
+
 - (void)tapInGrand:(UIGestureRecognizer *)recognier
 {
     UIView *view = recognier.view;
     [self tapSelect:view];
 }
+
+#pragma mark - Private
+
+/******************************
+ subviews
+ ******************************/
 
 - (UIPickerView *)pickerView
 {
