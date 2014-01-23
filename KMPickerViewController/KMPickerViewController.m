@@ -126,7 +126,7 @@
 - (void)tapInGrand:(UIGestureRecognizer *)recognier
 {
     UIView *view = recognier.view;
-    [self tapSelect:view];
+    [self tapCancel:view];
 }
 
 #pragma mark - Private
