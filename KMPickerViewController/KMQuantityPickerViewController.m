@@ -79,9 +79,9 @@ static NSString *kDefaultOverUnitString = @"以上";
 {
     NSInteger quantity = row + _minimumQuantity;
     if (quantity == _maximumQuantity) {
-        return [NSString stringWithFormat:@"%d%@%@", quantity, self.unit, self.overUnit];
+        return [NSString stringWithFormat:@"%ld%@%@", (long)quantity, self.unit, self.overUnit];
     }
-    return [NSString stringWithFormat:@"%d%@", quantity, self.unit];
+    return [NSString stringWithFormat:@"%ld%@", (long)quantity, self.unit];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component

@@ -24,7 +24,7 @@
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return [NSString stringWithFormat:@"%d", row];
+    return [NSString stringWithFormat:@"%ld", (long)row];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
@@ -54,7 +54,7 @@
 - (void)pickerViewController:(KMPickerViewController *)controller didSelect:(UIPickerView *)pickerView
 {
     NSInteger row = [pickerView selectedRowInComponent:0];
-    [self.defaultButton setTitle:[NSString stringWithFormat:@"%d", row] forState:UIControlStateNormal];
+    [self.defaultButton setTitle:[NSString stringWithFormat:@"%ld", (long)row] forState:UIControlStateNormal];
     [self deselectRowInTableView];
 }
 
