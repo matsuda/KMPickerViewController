@@ -28,12 +28,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)showInView:(UIView *)view amimated:(BOOL)flag completion:(void (^)(BOOL))completion
+- (void)presentPickerAnimated:(BOOL)flag completion:(void (^)(BOOL))completion
 {
     __block NSInteger index = [[[self class] prefectures] indexOfObject:_prefecture];
     if (index == NSNotFound) index = 0;
     __weak typeof(self) wself = self;
-    [super showInView:view amimated:flag completion:^(BOOL finished) {
+    [super presentPickerAnimated:flag completion:^(BOOL finished) {
         [wself.pickerView selectRow:index inComponent:0 animated:YES];
     }];
 }
@@ -90,7 +90,7 @@
 - (void)showInView:(UIView *)view prefecture:(NSString *)prefecture completion:(void (^)(BOOL))completion
 {
     self.prefecture = prefecture;
-    [self showInView:view amimated:YES completion:completion];
+    [self presentPickerAnimated:YES completion:completion];
 }
 
 - (void)setPrefectureDelegate:(id<KMPrefecturePickerViewControllerDelegate>)prefectureDelegate

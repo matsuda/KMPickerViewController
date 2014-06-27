@@ -46,12 +46,12 @@ static NSString *kDefaultOverUnitString = @"以上";
     // Dispose of any resources that can be recreated.
 }
 
-- (void)showInView:(UIView *)view amimated:(BOOL)flag completion:(void (^)(BOOL))completion
+- (void)presentPickerAnimated:(BOOL)flag completion:(void (^)(BOOL))completion
 {
     __block NSInteger index = _quantity - _minimumQuantity;
     if (index < _minimumQuantity - 1) index = 0;
     __weak typeof(self) wself = self;
-    [super showInView:view amimated:flag completion:^(BOOL finished) {
+    [super presentPickerAnimated:flag completion:^(BOOL finished) {
         [wself.pickerView selectRow:index inComponent:0 animated:YES];
     }];
 }
@@ -109,7 +109,7 @@ static NSString *kDefaultOverUnitString = @"以上";
 - (void)showInView:(UIView *)view quantity:(NSInteger)quantity completion:(void (^)(BOOL))completion
 {
     self.quantity = quantity;
-    [self showInView:view amimated:YES completion:completion];
+    [self presentPickerAnimated:YES completion:completion];
 }
 
 - (void)setQuantityDelegate:(id<KMQuantityPickerViewControllerDelegate>)quantityDelegate

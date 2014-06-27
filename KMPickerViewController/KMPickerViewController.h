@@ -16,7 +16,7 @@
 @property (strong, nonatomic, readonly) UIPickerView *pickerView;
 @property (weak, nonatomic) id <KMPickerViewControllerDelegate> delegate;
 
-- (void)showInView:(UIView *)view amimated:(BOOL)flag completion:(void (^)(BOOL finished))completion;
+- (void)presentPickerAnimated:(BOOL)flag completion:(void (^)(BOOL finished))completion;
 - (void)dismissAnimated:(BOOL)flag completion:(void (^)(BOOL finished))completion;
 
 - (id)initWithDelegate:(id)delegate __attribute__((deprecated));

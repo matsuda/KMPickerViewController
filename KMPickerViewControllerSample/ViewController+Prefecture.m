@@ -24,11 +24,10 @@
 {
     [self.view endEditing:YES];
     KMPrefecturePickerViewController *picker = self.prefecturePickerController;
-    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
     NSString *prefecture = self.prefectureButton.titleLabel.text;
     // [picker showInView:window prefecture:prefecture completion:nil];
     picker.prefecture = prefecture;
-    [picker showInView:window amimated:YES completion:nil];
+    [picker presentPickerAnimated:YES completion:nil];
 }
 
 #pragma mark - KMPrefecturePickerViewControllerDelegate

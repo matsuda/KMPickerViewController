@@ -43,8 +43,10 @@
 
 #pragma mark - Public
 
-- (void)showInView:(UIView *)view amimated:(BOOL)flag completion:(void (^)(BOOL))completion
+- (void)presentPickerAnimated:(BOOL)flag completion:(void (^)(BOOL))completion
 {
+    if (self.view.superview) return;
+
     CGRect frame = [[UIScreen mainScreen] bounds];
     self.view.frame = frame;
 
@@ -55,7 +57,13 @@
 
     self.contentView.frame = startRect;
     self.grandView.alpha = 0.f;
-    [view addSubview:self.view];
+    NSEnumerator *frontToBackWindows = [[[UIApplication sharedApplication]windows]reverseObjectEnumerator];
+    for (UIWindow *window in frontToBackWindows) {
+        if (window.windowLevel == UIWindowLevelNormal) {
+            [window addSubview:self.view];
+            break;
+        }
+    }
 
     if (flag) {
         [UIView animateWithDuration:0.35f delay:0
@@ -73,6 +81,8 @@
 
 - (void)dismissAnimated:(BOOL)flag completion:(void (^)(BOOL finished))completion
 {
+    if (!self.view.superview) return;
+
     CGRect startRect = self.contentView.frame;
     startRect.origin.y = CGRectGetMaxY(self.view.frame) - startRect.size.height;
     CGRect endRect = startRect;
@@ -212,7 +222,7 @@
 
 - (void)showInView:(UIView *)view completion:(void (^)(BOOL))completion
 {
-    [self showInView:view amimated:YES completion:completion];
+    [self presentPickerAnimated:YES completion:completion];
 }
 
 - (void)dismissWithCompletion:(void (^)(BOOL finished))completion

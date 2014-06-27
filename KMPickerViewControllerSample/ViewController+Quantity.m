@@ -27,11 +27,10 @@
 {
     [self.view endEditing:YES];
     KMQuantityPickerViewController *picker = self.quantityPickerController;
-    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
     NSInteger quantity = [self.quantityButton.titleLabel.text integerValue];
     // [picker showInView:window quantity:quantity completion:nil];
     picker.quantity = quantity;
-    [picker showInView:window amimated:YES completion:nil];
+    [picker presentPickerAnimated:YES completion:NULL];
 }
 
 #pragma mark - KMQuantityPickerViewControllerDelegate

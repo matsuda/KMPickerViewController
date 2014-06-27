@@ -48,9 +48,7 @@
 {
     [self.view endEditing:YES];
     KMPickerViewController *picker = self.pickerController;
-    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-    [picker showInView:window amimated:YES completion:nil];
-    // [picker showInView:window amimated:NO completion:nil];
+    [picker presentPickerAnimated:YES completion:NULL];
 }
 
 #pragma mark - KMPickerViewControllerDelegate
