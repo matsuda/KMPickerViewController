@@ -112,8 +112,8 @@
 
 - (void)tapSelect:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(pickerViewController:didSelect:)]) {
-        [self.delegate pickerViewController:self didSelect:self.pickerView];
+    if ([self.delegate respondsToSelector:@selector(pickerViewControllerDidSelect:)]) {
+        [self.delegate pickerViewControllerDidSelect:self];
     }
     [self dismissAnimated:YES completion:nil];
 }

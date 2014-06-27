@@ -40,10 +40,8 @@
 
 - (void)tapSelect:(id)sender
 {
-    NSInteger row = [self.pickerView selectedRowInComponent:0];
-    NSString *title = [[self class] prefectures][row];
     if ([self.delegate respondsToSelector:@selector(prefecturePickerViewController:didSelectPrefecture:)]) {
-        [self.delegate prefecturePickerViewController:self didSelectPrefecture:title];
+        [self.delegate prefecturePickerViewController:self didSelectPrefecture:self.prefecture];
     }
     [self dismissAnimated:YES completion:nil];
 }
@@ -67,6 +65,8 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
+    NSInteger selectedRow = [self.pickerView selectedRowInComponent:0];
+    _prefecture = [[self class] prefectures][selectedRow];
 }
 
 + (NSArray *)prefectures

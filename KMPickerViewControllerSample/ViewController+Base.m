@@ -53,9 +53,9 @@
 
 #pragma mark - KMPickerViewControllerDelegate
 
-- (void)pickerViewController:(KMPickerViewController *)controller didSelect:(UIPickerView *)pickerView
+- (void)pickerViewControllerDidSelect:(KMPickerViewController *)controller
 {
-    NSInteger row = [pickerView selectedRowInComponent:0];
+    NSInteger row = [controller.pickerView selectedRowInComponent:0];
     [self.defaultButton setTitle:[NSString stringWithFormat:@"%ld", (long)row] forState:UIControlStateNormal];
 }
 

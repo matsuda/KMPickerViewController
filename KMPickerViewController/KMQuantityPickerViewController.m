@@ -58,10 +58,8 @@ static NSString *kDefaultOverUnitString = @"以上";
 
 - (void)tapSelect:(id)sender
 {
-    NSInteger row = [self.pickerView selectedRowInComponent:0];
-    NSInteger quantity = row + _minimumQuantity;
     if ([self.delegate respondsToSelector:@selector(quantityPickerViewController:didSelectQuantity:)]) {
-        [self.delegate quantityPickerViewController:self didSelectQuantity:quantity];
+        [self.delegate quantityPickerViewController:self didSelectQuantity:self.quantity];
     }
     [self dismissAnimated:YES completion:nil];
 }
@@ -89,6 +87,8 @@ static NSString *kDefaultOverUnitString = @"以上";
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
+    NSInteger selectedRow = [pickerView selectedRowInComponent:0];
+    _quantity = selectedRow + _minimumQuantity;
 }
 
 #pragma mark - deprecated

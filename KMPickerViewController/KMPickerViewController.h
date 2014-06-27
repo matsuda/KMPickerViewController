@@ -37,7 +37,7 @@
 @protocol KMPickerViewControllerDelegate <NSObject>
 
 @optional
-- (void)pickerViewController:(KMPickerViewController *)controller didSelect:(UIPickerView *)pickerView;
+- (void)pickerViewControllerDidSelect:(KMPickerViewController *)controller;
 - (void)pickerViewControllerDidCancel:(KMPickerViewController *)controller;
 
 @end
