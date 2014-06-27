@@ -64,7 +64,7 @@
     self.pickerView.dataSource = delegate;
 }
 
-- (void)showInView:(UIView *)view completion:(void (^)(BOOL finished))completion
+- (void)showInView:(UIView *)view amimated:(BOOL)flag completion:(void (^)(BOOL))completion
 {
     CGRect frame = [[UIScreen mainScreen] bounds];
     self.view.frame = frame;
@@ -78,15 +78,21 @@
     self.grandView.alpha = 0.f;
     [view addSubview:self.view];
 
-    [UIView animateWithDuration:0.35f delay:0
-                        options:(UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionLayoutSubviews)
-                     animations:^{
-                         self.grandView.alpha = 0.7;
-                         self.contentView.frame = endRect;
-    } completion:completion];
+    if (flag) {
+        [UIView animateWithDuration:0.35f delay:0
+                            options:(UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionLayoutSubviews)
+                         animations:^{
+                             self.grandView.alpha = 0.7;
+                             self.contentView.frame = endRect;
+                         } completion:completion];
+    } else {
+        self.grandView.alpha = 0.7;
+        self.contentView.frame = endRect;
+        if (completion) completion(YES);
+    }
 }
 
-- (void)dismissWithCompletion:(void (^)(BOOL finished))completion
+- (void)dismissAnimated:(BOOL)flag completion:(void (^)(BOOL finished))completion
 {
     CGRect startRect = self.contentView.frame;
     startRect.origin.y = CGRectGetMaxY(self.view.frame) - startRect.size.height;
@@ -94,15 +100,33 @@
     endRect.origin.y += endRect.size.height;
 
     self.contentView.frame = startRect;
-    [UIView animateWithDuration:0.2f delay:0
-                        options:(UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionLayoutSubviews)
-                     animations:^{
-                         self.grandView.alpha = 0.f;
-                         self.contentView.frame = endRect;
-    } completion:^(BOOL finished) {
+
+    if (flag) {
+        [UIView animateWithDuration:0.2f delay:0
+                            options:(UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionLayoutSubviews)
+                         animations:^{
+                             self.grandView.alpha = 0.f;
+                             self.contentView.frame = endRect;
+                         } completion:^(BOOL finished) {
+                             [self.view removeFromSuperview];
+                             if (completion) completion(finished);
+                         }];
+    } else {
+        self.grandView.alpha = 0.f;
+        self.contentView.frame = endRect;
         [self.view removeFromSuperview];
-        if (completion) completion(finished);
-    }];
+        if (completion) completion(YES);
+    }
+}
+
+- (void)showInView:(UIView *)view completion:(void (^)(BOOL))completion
+{
+    [self showInView:view amimated:YES completion:completion];
+}
+
+- (void)dismissWithCompletion:(void (^)(BOOL finished))completion
+{
+    [self dismissAnimated:YES completion:completion];
 }
 
 #pragma mark - Actions
@@ -112,7 +136,7 @@
     if ([self.delegate respondsToSelector:@selector(pickerViewController:didSelect:)]) {
         [self.delegate pickerViewController:self didSelect:self.pickerView];
     }
-    [self dismissWithCompletion:nil];
+    [self dismissAnimated:YES completion:nil];
 }
 
 - (void)tapCancel:(id)sender
@@ -120,7 +144,7 @@
     if ([self.delegate respondsToSelector:@selector(pickerViewControllerDidCancel:)]) {
         [self.delegate pickerViewControllerDidCancel:self];
     }
-    [self dismissWithCompletion:nil];
+    [self dismissAnimated:YES completion:nil];
 }
 
 - (void)tapInGrand:(UIGestureRecognizer *)recognier

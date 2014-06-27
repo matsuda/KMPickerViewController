@@ -82,13 +82,11 @@
     NSInteger row = [pickerView selectedRowInComponent:0];
     NSString *title = [[self class] prefectures][row];
     [self.prefectureDelegate prefecturePickerViewController:self didSelectPrefecture:title];
-    [self dismissWithCompletion:nil];
 }
 
 - (void)pickerViewControllerDidCancel:(KMPickerViewController *)controller
 {
     [self.prefectureDelegate prefecturePickerViewControllerDidCancel:self];
-    [self dismissWithCompletion:nil];
 }
 
 + (NSArray *)prefectures

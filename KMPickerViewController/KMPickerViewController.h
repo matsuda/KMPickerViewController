@@ -17,8 +17,11 @@
 @property (weak, nonatomic) id <KMPickerViewControllerDelegate> delegate;
 
 - (id)initWithDelegate:(id)delegate;
-- (void)showInView:(UIView *)view completion:(void (^)(BOOL finished))completion;
-- (void)dismissWithCompletion:(void (^)(BOOL finished))completion;
+- (void)showInView:(UIView *)view amimated:(BOOL)flag completion:(void (^)(BOOL finished))completion;
+- (void)dismissAnimated:(BOOL)flag completion:(void (^)(BOOL finished))completion;
+
+- (void)showInView:(UIView *)view completion:(void (^)(BOOL finished))completion __attribute__((deprecated));
+- (void)dismissWithCompletion:(void (^)(BOOL finished))completion __attribute__((deprecated));
 
 @end
 
