@@ -27,6 +27,7 @@ static NSString *kDefaultOverUnitString = @"以上";
         _maximumQuantity = kDefaultMaximumQuantity;
         _unit = [kDefaultUnitString copy];
         _overUnit = [kDefaultOverUnitString copy];
+        _quantity = _minimumQuantity;
         self.delegate = self;
         self.quantityDelegate = delegate;
     }
@@ -45,22 +46,20 @@ static NSString *kDefaultOverUnitString = @"以上";
     // Dispose of any resources that can be recreated.
 }
 
-- (void)showInView:(UIView *)view completion:(void (^)(BOOL))completion
+- (void)showInView:(UIView *)view amimated:(BOOL)flag completion:(void (^)(BOOL))completion
 {
-    @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                   reason:[NSString stringWithFormat:@"You must use %@ method.",
-                                           NSStringFromSelector(@selector(showInView:quantity:completion:))]
-                                 userInfo:nil];
+    __block NSInteger index = _quantity - _minimumQuantity;
+    if (index < _minimumQuantity - 1) index = 0;
+    __weak typeof(self) wself = self;
+    [super showInView:view amimated:flag completion:^(BOOL finished) {
+        [wself.pickerView selectRow:index inComponent:0 animated:YES];
+    }];
 }
 
 - (void)showInView:(UIView *)view quantity:(NSInteger)quantity completion:(void (^)(BOOL))completion
 {
-    __block NSInteger index = quantity - _minimumQuantity;
-    if (index < _minimumQuantity - 1) index = 0;
-    __weak typeof(self) wself = self;
-    [super showInView:view completion:^(BOOL finished) {
-        [wself.pickerView selectRow:index inComponent:0 animated:YES];
-    }];
+    self.quantity = quantity;
+    [self showInView:view amimated:YES completion:completion];
 }
 
 #pragma mark - UIPickerViewDataSource & UIPickerViewDelegate

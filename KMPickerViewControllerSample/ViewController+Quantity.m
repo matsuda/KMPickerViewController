@@ -27,7 +27,9 @@
     picker.unit = @"枚";
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
     NSInteger quantity = [self.quantityButton.titleLabel.text integerValue];
-    [picker showInView:window quantity:quantity completion:nil];
+    // [picker showInView:window quantity:quantity completion:nil];
+    picker.quantity = quantity;
+    [picker showInView:window amimated:YES completion:nil];
 }
 
 #pragma mark - KMQuantityPickerViewControllerDelegate
