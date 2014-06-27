@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "KMPickerViewController.h"
 
-@interface ViewController (Base)
+@interface ViewController (Base) <UIPickerViewDataSource, UIPickerViewDelegate, KMPickerViewControllerDelegate>
 
 - (KMPickerViewController *)pickerController;
 - (void)presentPicker;

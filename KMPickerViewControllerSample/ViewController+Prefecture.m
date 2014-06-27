@@ -13,7 +13,9 @@
 - (KMPrefecturePickerViewController *)prefecturePickerController
 {
     if (!_prefecturePickerController) {
-        _prefecturePickerController = [[KMPrefecturePickerViewController alloc] initWithDelegate:self];
+        // _prefecturePickerController = [[KMPrefecturePickerViewController alloc] initWithDelegate:self];
+        _prefecturePickerController = [KMPrefecturePickerViewController new];
+        _prefecturePickerController.delegate = self;
     }
     return _prefecturePickerController;
 }

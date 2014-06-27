@@ -36,7 +36,10 @@
 - (KMPickerViewController *)pickerController
 {
     if (!_pickerController) {
-        _pickerController = [[KMPickerViewController alloc] initWithDelegate:self];
+        _pickerController = [KMPickerViewController new];
+        _pickerController.pickerView.dataSource = self;
+        _pickerController.pickerView.delegate = self;
+        _pickerController.delegate = self;
     }
     return _pickerController;
 }
@@ -46,8 +49,8 @@
     [self.view endEditing:YES];
     KMPickerViewController *picker = self.pickerController;
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-    // [picker showInView:window amimated:YES completion:nil];
-    [picker showInView:window amimated:NO completion:nil];
+    [picker showInView:window amimated:YES completion:nil];
+    // [picker showInView:window amimated:NO completion:nil];
 }
 
 #pragma mark - KMPickerViewControllerDelegate

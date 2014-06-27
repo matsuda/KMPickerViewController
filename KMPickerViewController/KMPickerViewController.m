@@ -29,20 +29,6 @@
     return self;
 }
 
-- (id)initWithDelegate:(id<KMPickerViewControllerDelegate>)delegate
-{
-    self = [self initWithNibName:nil bundle:nil];
-    if (self) {
-        self.delegate = delegate;
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -56,13 +42,6 @@
 }
 
 #pragma mark - Public
-
-- (void)setDelegate:(id<KMPickerViewControllerDelegate>)delegate
-{
-    _delegate = delegate;
-    self.pickerView.delegate = delegate;
-    self.pickerView.dataSource = delegate;
-}
 
 - (void)showInView:(UIView *)view amimated:(BOOL)flag completion:(void (^)(BOOL))completion
 {
@@ -119,16 +98,6 @@
     }
 }
 
-- (void)showInView:(UIView *)view completion:(void (^)(BOOL))completion
-{
-    [self showInView:view amimated:YES completion:completion];
-}
-
-- (void)dismissWithCompletion:(void (^)(BOOL finished))completion
-{
-    [self dismissAnimated:YES completion:completion];
-}
-
 #pragma mark - Actions
 
 - (void)tapSelect:(id)sender
@@ -163,7 +132,6 @@
 {
     if (!_pickerView) {
         UIPickerView *view = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 44.f, CGRectGetWidth(self.view.frame), 216.f)];
-        view.delegate = self.delegate;
         view.showsSelectionIndicator = YES;
         view.backgroundColor = [UIColor whiteColor];
         _pickerView = view;
@@ -229,6 +197,27 @@
         _grandView = view;
     }
     return _grandView;
+}
+
+#pragma mark - deprecated
+
+- (id)initWithDelegate:(id<KMPickerViewControllerDelegate>)delegate
+{
+    self = [self initWithNibName:nil bundle:nil];
+    if (self) {
+        self.delegate = delegate;
+    }
+    return self;
+}
+
+- (void)showInView:(UIView *)view completion:(void (^)(BOOL))completion
+{
+    [self showInView:view amimated:YES completion:completion];
+}
+
+- (void)dismissWithCompletion:(void (^)(BOOL finished))completion
+{
+    [self dismissAnimated:YES completion:completion];
 }
 
 @end

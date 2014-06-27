@@ -13,23 +13,21 @@ static const NSInteger kDefaultMaximumQuantity = 20;
 static NSString *kDefaultUnitString = @"個";
 static NSString *kDefaultOverUnitString = @"以上";
 
-@interface KMQuantityPickerViewController () <UIPickerViewDataSource, UIPickerViewDelegate, KMPickerViewControllerDelegate>
+@interface KMQuantityPickerViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 
 @end
 
 @implementation KMQuantityPickerViewController
 
-- (id)initWithDelegate:(id)delegate
+- (id)init
 {
-    self = [super initWithDelegate:delegate];
+    self = [super init];
     if (self) {
         _minimumQuantity = kDefaultMinimunQuantity;
         _maximumQuantity = kDefaultMaximumQuantity;
         _unit = [kDefaultUnitString copy];
         _overUnit = [kDefaultOverUnitString copy];
         _quantity = _minimumQuantity;
-        self.delegate = self;
-        self.quantityDelegate = delegate;
     }
     return self;
 }
@@ -38,6 +36,13 @@ static NSString *kDefaultOverUnitString = @"以上";
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.pickerView.dataSource = self;
+    self.pickerView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,10 +61,14 @@ static NSString *kDefaultOverUnitString = @"以上";
     }];
 }
 
-- (void)showInView:(UIView *)view quantity:(NSInteger)quantity completion:(void (^)(BOOL))completion
+- (void)tapSelect:(id)sender
 {
-    self.quantity = quantity;
-    [self showInView:view amimated:YES completion:completion];
+    NSInteger row = [self.pickerView selectedRowInComponent:0];
+    NSInteger quantity = row + _minimumQuantity;
+    if ([self.delegate respondsToSelector:@selector(quantityPickerViewController:didSelectQuantity:)]) {
+        [self.delegate quantityPickerViewController:self didSelectQuantity:quantity];
+    }
+    [self dismissAnimated:YES completion:nil];
 }
 
 #pragma mark - UIPickerViewDataSource & UIPickerViewDelegate
@@ -87,22 +96,35 @@ static NSString *kDefaultOverUnitString = @"以上";
 {
 }
 
-#pragma mark - KMPickerViewControllerDelegate
+#pragma mark - deprecated
 
-- (void)pickerViewController:(KMPickerViewController *)controller didSelect:(UIPickerView *)pickerView
+- (id)initWithDelegate:(id)delegate
 {
-    NSInteger row = [pickerView selectedRowInComponent:0];
-    NSInteger quantity = row + _minimumQuantity;
-    if ([self.quantityDelegate respondsToSelector:@selector(quantityPickerViewController:didSelectQuantity:)]) {
-        [self.quantityDelegate quantityPickerViewController:self didSelectQuantity:quantity];
+    self = [super initWithDelegate:delegate];
+    if (self) {
+        _minimumQuantity = kDefaultMinimunQuantity;
+        _maximumQuantity = kDefaultMaximumQuantity;
+        _unit = [kDefaultUnitString copy];
+        _overUnit = [kDefaultOverUnitString copy];
+        _quantity = _minimumQuantity;
     }
+    return self;
 }
 
-- (void)pickerViewControllerDidCancel:(KMPickerViewController *)controller
+- (void)showInView:(UIView *)view quantity:(NSInteger)quantity completion:(void (^)(BOOL))completion
 {
-    if ([self.quantityDelegate respondsToSelector:@selector(quantityPickerViewControllerDidCancel:)]) {
-        [self.quantityDelegate quantityPickerViewControllerDidCancel:self];
-    }
+    self.quantity = quantity;
+    [self showInView:view amimated:YES completion:completion];
+}
+
+- (void)setQuantityDelegate:(id<KMQuantityPickerViewControllerDelegate>)quantityDelegate
+{
+    self.delegate = quantityDelegate;
+}
+
+- (id<KMQuantityPickerViewControllerDelegate>)quantityDelegate
+{
+    return (id<KMQuantityPickerViewControllerDelegate>)self.delegate;
 }
 
 @end

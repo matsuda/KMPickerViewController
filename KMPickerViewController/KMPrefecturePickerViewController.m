@@ -8,26 +8,23 @@
 
 #import "KMPrefecturePickerViewController.h"
 
-@interface KMPrefecturePickerViewController () <UIPickerViewDataSource, UIPickerViewDelegate, KMPickerViewControllerDelegate>
+@interface KMPrefecturePickerViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 
 @end
 
 @implementation KMPrefecturePickerViewController
 
-- (id)initWithDelegate:(id)delegate
-{
-    self = [super initWithDelegate:delegate];
-    if (self) {
-        self.delegate = self;
-        self.prefectureDelegate = delegate;
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.pickerView.dataSource = self;
+    self.pickerView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,18 +43,14 @@
     }];
 }
 
-- (void)showInView:(UIView *)view completion:(void (^)(BOOL))completion
+- (void)tapSelect:(id)sender
 {
-    @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                   reason:[NSString stringWithFormat:@"You must use %@ method.",
-                                           NSStringFromSelector(@selector(showInView:prefecture:completion:))]
-                                 userInfo:nil];
-}
-
-- (void)showInView:(UIView *)view prefecture:(NSString *)prefecture completion:(void (^)(BOOL))completion
-{
-    self.prefecture = prefecture;
-    [self showInView:view amimated:YES completion:completion];
+    NSInteger row = [self.pickerView selectedRowInComponent:0];
+    NSString *title = [[self class] prefectures][row];
+    if ([self.delegate respondsToSelector:@selector(prefecturePickerViewController:didSelectPrefecture:)]) {
+        [self.delegate prefecturePickerViewController:self didSelectPrefecture:title];
+    }
+    [self dismissAnimated:YES completion:nil];
 }
 
 #pragma mark - UIPickerViewDataSource & UIPickerViewDelegate
@@ -81,20 +74,6 @@
 {
 }
 
-#pragma mark - KMPickerViewControllerDelegate
-
-- (void)pickerViewController:(KMPickerViewController *)controller didSelect:(UIPickerView *)pickerView
-{
-    NSInteger row = [pickerView selectedRowInComponent:0];
-    NSString *title = [[self class] prefectures][row];
-    [self.prefectureDelegate prefecturePickerViewController:self didSelectPrefecture:title];
-}
-
-- (void)pickerViewControllerDidCancel:(KMPickerViewController *)controller
-{
-    [self.prefectureDelegate prefecturePickerViewControllerDidCancel:self];
-}
-
 + (NSArray *)prefectures
 {
     static dispatch_once_t onceToken;
@@ -109,6 +88,24 @@
 {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"KMPickerViewController.bundle/prefectures" ofType:@"plist"];
     return [NSArray arrayWithContentsOfFile:path];
+}
+
+#pragma mark - deprecated
+
+- (void)showInView:(UIView *)view prefecture:(NSString *)prefecture completion:(void (^)(BOOL))completion
+{
+    self.prefecture = prefecture;
+    [self showInView:view amimated:YES completion:completion];
+}
+
+- (void)setPrefectureDelegate:(id<KMPrefecturePickerViewControllerDelegate>)prefectureDelegate
+{
+    self.delegate = prefectureDelegate;
+}
+
+- (id<KMPrefecturePickerViewControllerDelegate>)prefectureDelegate
+{
+    return (id<KMPrefecturePickerViewControllerDelegate>)self.delegate;
 }
 
 @end

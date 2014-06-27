@@ -12,24 +12,23 @@
 
 @interface KMQuantityPickerViewController : KMPickerViewController
 
-@property (weak, nonatomic) id <KMQuantityPickerViewControllerDelegate> quantityDelegate;
+@property (weak, nonatomic) id <KMPickerViewControllerDelegate, KMQuantityPickerViewControllerDelegate> delegate;
 @property (assign, nonatomic) NSInteger quantity;
 @property (assign, nonatomic) NSInteger minimumQuantity;
 @property (assign, nonatomic) NSInteger maximumQuantity;
 @property (copy, nonatomic) NSString *unit;
 @property (copy, nonatomic) NSString *overUnit;
 
-- (id)initWithDelegate:(id)delegate;
+@property (weak, nonatomic) id <KMQuantityPickerViewControllerDelegate> quantityDelegate __attribute__((deprecated));
 - (void)showInView:(UIView *)view quantity:(NSInteger)quantity
         completion:(void (^)(BOOL finished))completion __attribute__((deprecated));
 
 @end
 
-@protocol KMQuantityPickerViewControllerDelegate <NSObject>
+@protocol KMQuantityPickerViewControllerDelegate <NSObject, KMPickerViewControllerDelegate>
 
 @optional
 - (void)quantityPickerViewController:(KMQuantityPickerViewController *)controller
                    didSelectQuantity:(NSInteger)quantity;
-- (void)quantityPickerViewControllerDidCancel:(KMQuantityPickerViewController *)controller;
 
 @end

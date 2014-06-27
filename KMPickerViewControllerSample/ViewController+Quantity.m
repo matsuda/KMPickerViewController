@@ -13,7 +13,12 @@
 - (KMQuantityPickerViewController *)quantityPickerController
 {
     if (!_quantityPickerController) {
-        _quantityPickerController = [[KMQuantityPickerViewController alloc] initWithDelegate:self];
+        // _quantityPickerController = [[KMQuantityPickerViewController alloc] initWithDelegate:self];
+        _quantityPickerController = [KMQuantityPickerViewController new];
+        _quantityPickerController.delegate = self;
+        _quantityPickerController.minimumQuantity = 1;
+        _quantityPickerController.maximumQuantity = 11;
+        _quantityPickerController.unit = @"枚";
     }
     return _quantityPickerController;
 }
@@ -22,9 +27,6 @@
 {
     [self.view endEditing:YES];
     KMQuantityPickerViewController *picker = self.quantityPickerController;
-    picker.minimumQuantity = 1;
-    picker.maximumQuantity = 11;
-    picker.unit = @"枚";
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
     NSInteger quantity = [self.quantityButton.titleLabel.text integerValue];
     // [picker showInView:window quantity:quantity completion:nil];

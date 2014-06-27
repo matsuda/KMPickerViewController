@@ -16,16 +16,25 @@
 @property (strong, nonatomic, readonly) UIPickerView *pickerView;
 @property (weak, nonatomic) id <KMPickerViewControllerDelegate> delegate;
 
-- (id)initWithDelegate:(id)delegate;
 - (void)showInView:(UIView *)view amimated:(BOOL)flag completion:(void (^)(BOOL finished))completion;
 - (void)dismissAnimated:(BOOL)flag completion:(void (^)(BOOL finished))completion;
 
+- (id)initWithDelegate:(id)delegate __attribute__((deprecated));
 - (void)showInView:(UIView *)view completion:(void (^)(BOOL finished))completion __attribute__((deprecated));
 - (void)dismissWithCompletion:(void (^)(BOOL finished))completion __attribute__((deprecated));
 
 @end
 
-@protocol KMPickerViewControllerDelegate <UIPickerViewDataSource, UIPickerViewDelegate>
+
+@interface KMPickerViewController (Protected)
+
+- (void)tapSelect:(id)sender;
+- (void)tapCancel:(id)sender;
+
+@end
+
+
+@protocol KMPickerViewControllerDelegate <NSObject>
 
 @optional
 - (void)pickerViewController:(KMPickerViewController *)controller didSelect:(UIPickerView *)pickerView;

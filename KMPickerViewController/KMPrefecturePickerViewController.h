@@ -12,20 +12,22 @@
 
 @interface KMPrefecturePickerViewController : KMPickerViewController
 
-@property (weak, nonatomic) id <KMPrefecturePickerViewControllerDelegate> prefectureDelegate;
+@property (weak, nonatomic) id <KMPickerViewControllerDelegate, KMPrefecturePickerViewControllerDelegate> delegate;
 @property (copy, nonatomic) NSString *prefecture;
 @property (strong, nonatomic) NSLocale *locale;
 
++ (NSArray *)prefectures;
+
+@property (weak, nonatomic) id <KMPrefecturePickerViewControllerDelegate> prefectureDelegate __attribute__((deprecated));
 - (void)showInView:(UIView *)view prefecture:(NSString *)prefecture
         completion:(void (^)(BOOL finished))completion __attribute__((deprecated));
-+ (NSArray *)prefectures;
 
 @end
 
-@protocol KMPrefecturePickerViewControllerDelegate <NSObject>
+@protocol KMPrefecturePickerViewControllerDelegate <NSObject, KMPickerViewControllerDelegate>
 
+@optional
 - (void)prefecturePickerViewController:(KMPrefecturePickerViewController *)controller
                    didSelectPrefecture:(NSString *)prefecture;
-- (void)prefecturePickerViewControllerDidCancel:(KMPrefecturePickerViewController *)controller;
 
 @end
