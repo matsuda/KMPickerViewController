@@ -66,7 +66,7 @@
     }
 
     if (flag) {
-        [UIView animateWithDuration:0.35f delay:0
+        [UIView animateWithDuration:0.25f delay:0
                             options:(UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionLayoutSubviews)
                          animations:^{
                              self.grandView.alpha = 0.7;
