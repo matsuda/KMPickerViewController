@@ -59,12 +59,6 @@
 {
     NSInteger row = [pickerView selectedRowInComponent:0];
     [self.defaultButton setTitle:[NSString stringWithFormat:@"%ld", (long)row] forState:UIControlStateNormal];
-    [self deselectRowInTableView];
-}
-
-- (void)pickerViewControllerDidCancel:(KMPickerViewController *)controller
-{
-    [self deselectRowInTableView];
 }
 
 @end

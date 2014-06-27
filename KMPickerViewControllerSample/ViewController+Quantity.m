@@ -40,12 +40,6 @@
                    didSelectQuantity:(NSInteger)quantity
 {
     [self.quantityButton setTitle:[NSString stringWithFormat:@"%ld", (long)quantity] forState:UIControlStateNormal];
-    [self deselectRowInTableView];
-}
-
-- (void)quantityPickerViewControllerDidCancel:(KMQuantityPickerViewController *)controller
-{
-    [self deselectRowInTableView];
 }
 
 @end

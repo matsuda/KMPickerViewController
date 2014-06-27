@@ -23,9 +23,3 @@
 @property (weak, nonatomic) IBOutlet UIButton *prefectureButton;
 
 @end
-
-@interface ViewController (Protected)
-
-- (void)deselectRowInTableView;
-
-@end

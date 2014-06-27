@@ -37,12 +37,6 @@
                    didSelectPrefecture:(NSString *)prefecture
 {
     [self.prefectureButton setTitle:prefecture forState:UIControlStateNormal];
-    [self deselectRowInTableView];
-}
-
-- (void)prefecturePickerViewControllerDidCancel:(KMPrefecturePickerViewController *)controller
-{
-    [self deselectRowInTableView];
 }
 
 @end

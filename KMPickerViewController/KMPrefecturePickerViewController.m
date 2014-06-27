@@ -18,11 +18,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
     self.pickerView.dataSource = self;
     self.pickerView.delegate = self;
 }

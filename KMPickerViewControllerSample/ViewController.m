@@ -58,14 +58,6 @@
     [self presentPrefecturePicker];
 }
 
-- (void)deselectRowInTableView
-{
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    if (indexPath) {
-        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    }
-}
-
 #pragma mark - Table view data source
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
