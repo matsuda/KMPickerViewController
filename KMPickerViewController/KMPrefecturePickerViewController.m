@@ -14,6 +14,8 @@
 
 @implementation KMPrefecturePickerViewController
 
+@dynamic delegate;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

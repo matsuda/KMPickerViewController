@@ -19,6 +19,8 @@ static NSString *kDefaultOverUnitString = @"以上";
 
 @implementation KMQuantityPickerViewController
 
+@dynamic delegate;
+
 - (id)init
 {
     self = [super init];
